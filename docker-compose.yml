@@ -1,0 +1,13 @@
+version: "3.7"
+services:
+  web-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/web-app
+    env_file:
+      - .env
