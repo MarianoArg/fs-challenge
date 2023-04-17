@@ -3,7 +3,6 @@ import { json } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import client from "~/lib/client";
 import { Outlet } from "~/components/OutletWithContext";
-import ky from "ky-universal";
 
 import { requireUserJwt } from "~/session.server";
 import Header from "~/components/Header";
@@ -13,13 +12,7 @@ export const loader = async ({ request }: LoaderArgs) => {
   const url = new URL(request.url);
   const search = new URLSearchParams(url.search);
   try {
-    const todoList = await client
-      .get(`todos?status=${search.get("q")}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .json();
+    const todoList = await client(`todos?status=${search.get("q")}`, { token });
     return json({ todoListItems: todoList?.todos });
   } catch (error) {
     console.log("error here", error);

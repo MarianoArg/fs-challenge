@@ -1,6 +1,7 @@
 # FoodStyles React Frontend
 
 This is the Frontend Web App for the FoodSyles Challenge.
+[Checkout this video about how it works](https://www.loom.com/share/953f468d416a4fa6956dcdf9c1b338bd)
 
 ## What's in the stack
 
@@ -18,14 +19,6 @@ npm install
 cp .env.example .env
 
 npm run dev
-```
-
-## Docker Compose
-
-```bash
-docker-compose up
-# or detached
-docker-compose up -d
 ```
 
 ### Type Checking
